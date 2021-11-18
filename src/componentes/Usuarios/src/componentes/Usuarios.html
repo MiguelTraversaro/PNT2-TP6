@@ -1,0 +1,30 @@
+<section class="src-componentes-objetos">
+  <div class="jumbotron">
+    <h2>Usuarios</h2>
+    <hr><br>
+    <button class="btn btn-primary my-3 mr-3" @click="obtenerUsuarios()">Pedir Usuarios Then</button>
+    <button class="btn btn-primary my-3 mr-3" @click="obtenerUsuariosAsync()">Pedir Usuarios Async</button>
+
+    <div v-if="usuarios.length" class="table-responsive">
+      <table class="table table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Email</th>
+        </tr>
+        <tr v-for="(objeto, index) in usuarios" :key="index">
+          <td>{{objeto.id}}</td>
+          <td>{{objeto.nombre}}</td>
+          <td>{{objeto.edad}}</td>
+          <td>{{objeto.email}}</td>
+        </tr>
+      </table>
+      <h4 v-if="usuarios.length==1" class="alert alert-primary">Se encontró {{usuarios.length}} usuario</h4>
+      <h4 v-else class="alert alert-primary">Se encontró {{usuarios.length}} usuarios</h4>
+    </div>
+    <h4 v-else-if="peticion" class="alert alert-danger">Cargando datos...</h4>
+    <h4 v-else-if="encontro" class="alert alert-danger">No hay usuarios disponibles</h4>
+  </div>
+</section>
+
